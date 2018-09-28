@@ -1,0 +1,10 @@
+{
+    "http://runescape.com/": {
+        "status": 302,
+        "path": "undefined => http://runescape.com/",
+        "http://www.runescape.com/": {
+            "status": "external site",
+            "path": "undefined => http://runescape.com/ => http://www.runescape.com/"
+        }
+    }
+}
