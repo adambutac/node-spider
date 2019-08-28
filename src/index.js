@@ -7,6 +7,8 @@ import https from 'https';
 const VISITED_LINKS = {};
 let OPEN_CONNECTIONS = 0;
 
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+
 function log(res, target) {
   console.log({
     link: target,
@@ -19,23 +21,23 @@ function scrape(map, home, target) {
   const homeUrl = url.parse(home);
   const targetUrl = url.parse(url.resolve(home, target));
 
-  map[targetUrl.href] = { 
+  map[targetUrl.href] = {
     status: 'unresolved',
     path: `${map.path} => ${targetUrl.href}`
   };
 
   if(VISITED_LINKS[targetUrl.href]) {
-    map[targetUrl.href].status = 'visited'; 
-    return; 
+    map[targetUrl.href].status = 'visited';
+    return;
   }
 
   VISITED_LINKS[targetUrl.href] = map[targetUrl.href];
-  
+
   if(!(targetUrl.hostname == null || targetUrl.hostname === homeUrl.hostname)) {
     map[targetUrl.href].status = 'external site';
     return;
-  } 
-  
+  }
+
   let protocol = null;
   if(targetUrl.protocol === 'https:') protocol = https;
   else if(targetUrl.protocol === 'http:') protocol = http;
@@ -94,7 +96,7 @@ function scrape(map, home, target) {
     }
   });
 }
-  
+
 function main() {
   const site = process.argv[2];
   const siteUrl = url.parse(site);
