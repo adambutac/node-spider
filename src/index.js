@@ -9,12 +9,23 @@ let OPEN_CONNECTIONS = 0;
 
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
-function log(res, target) {
-  console.log({
-    link: target,
-    statusCode: res.statusCode,
-    headers: res.headers
+function exportToDot(map, hostname) {
+  let dotContent = 'digraph G {\\n';
+  const urls = Object.keys(map);
+  
+  urls.forEach(url => {
+    const entry = map[url];
+    dotContent += `  "${url}" [label="${url}\\nstatus: ${entry.status}"];\\n`;
+    if (entry.links && entry.links.length > 0) {
+      entry.links.forEach(link => {
+        dotContent += `  "${url}" -> "${link}";\\n`;
+      });
+    }
   });
+  
+  dotContent += '}';
+  fs.writeFileSync(`${hostname}.dot`, dotContent);
+  console.log(`Graphviz DOT file saved to ${hostname}.dot`);
 }
 
 function scrape(map, home, target) {
@@ -23,7 +34,8 @@ function scrape(map, home, target) {
 
   map[targetUrl.href] = {
     status: 'unresolved',
-    path: `${map.path} => ${targetUrl.href}`
+    path: `${map.path} => ${targetUrl.href}`,
+    links: []
   };
 
   if(VISITED_LINKS[targetUrl.href]) {
@@ -54,6 +66,7 @@ function scrape(map, home, target) {
           if(links) {
             links.forEach(link => {
               link = link.split(/(\"|\')/ig)[2];
+              map[targetUrl.href].links.push(link);
               scrape(map[targetUrl.href], home, link);
             });
           }
@@ -61,7 +74,9 @@ function scrape(map, home, target) {
         break;
       case 301:
       case 302:
-        scrape(map[targetUrl.href], home, res.headers.location);
+        const redirectUrl = res.headers.location;
+        map[targetUrl.href].links.push(redirectUrl);
+        scrape(map[targetUrl.href], home, redirectUrl);
       break;
       default:
       //log(res, targetUrl.href);
@@ -108,6 +123,7 @@ function main() {
     console.log(`MEM: ${process.memoryUsage().rss/1000000}MB`);
     if(OPEN_CONNECTIONS === 0){
       fs.writeFileSync(`${siteUrl.hostname}.json`, JSON.stringify(map, null, 4));
+      exportToDot(map, siteUrl.hostname);
       clearInterval(interval);
     }
   }, 2000);
