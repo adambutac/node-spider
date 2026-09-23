@@ -7,8 +7,6 @@ import https from 'https';
 const VISITED_LINKS = {};
 let OPEN_CONNECTIONS = 0;
 
-process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
-
 function log(res, target) {
   console.log({
     link: target,
