@@ -3,6 +3,7 @@ import fs from 'fs';
 import url from 'url';
 import http from 'http';
 import https from 'https';
+import * as cheerio from 'cheerio';
 
 const VISITED_LINKS = {};
 let OPEN_CONNECTIONS = 0;
@@ -50,10 +51,10 @@ function scrape(map, home, target) {
         let data = '';
         res.on('data', d => data+=d);
         res.on('end', () => {
-          const links = data.match(/href=(\'|\")\S*(\'|\")/ig);
+          const $ = cheerio.load(data);
+          const links = $('a[href]').map((i, el) => $(el).attr('href')).get();
           if(links) {
             links.forEach(link => {
-              link = link.split(/(\"|\')/ig)[2];
               scrape(map[targetUrl.href], home, link);
             });
           }
