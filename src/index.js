@@ -38,12 +38,18 @@ function scrape(map, home, target) {
     return;
   }
 
+  const options = {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36'
+    }
+  };
+
   let protocol = null;
   if(targetUrl.protocol === 'https:') protocol = https;
   else if(targetUrl.protocol === 'http:') protocol = http;
   else return;
 
-  protocol.get(targetUrl.href, res => {
+  protocol.get(targetUrl.href, options, res => {
     map[targetUrl.href].status = res.statusCode;
     switch(res.statusCode) {
       case 200:
