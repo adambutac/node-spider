@@ -98,6 +98,7 @@ function scrape(map, home, target) {
 }
 
 function main() {
+  console.log('> This spider climbs the web B^)')
   const site = process.argv[2];
   const siteUrl = url.parse(site);
   const map = {};

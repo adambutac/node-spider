@@ -1,12 +1,18 @@
 # node-spider
-A link scraper / website mapper I built a while back using nodejs. 
+A nodejs link crawler written a very long time ago...
 
-Even seemingly simple websites can generate very complex routes to sources within itself.
-After reading about some enterprise tools, I learned that some include trackking to map how users navigate your website.
-Knowing what paths users take can provide great insight into many aspects of a website. 
-A breif list of how I think such a tool could be useful includes:  
-- Show what links should be available at the front page (high demand resources should have the shortest routes).
-- Show what links should be available from other pages (users tend to visit page B after page A, but there is no direct route) .
-- Find dead links.
+It builds a json map/DAG of a website quickly by visiting links in parallel
 
-This (along with the fact that web-scraping seems to be a reoccuring topic) is what inspired me to start this project.
+One-liner:
+
+`npm install && npm src/index.js <https://target>`
+
+See [example output](www.runescape.com.json)
+
+## Build
+`npm install` Init project
+
+(optional) `npm run build` Minify into ./build/index.js 
+
+## Usage
+`npm run start <target>` to run the minified or simply `npm src/index.js`

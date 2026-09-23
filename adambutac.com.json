@@ -1,0 +1,222 @@
+{
+    "https://adambutac.com/": {
+        "status": 200,
+        "path": "undefined => https://adambutac.com/",
+        "https://adambutac.com/favicon.ico": {
+            "status": 200,
+            "path": "undefined => https://adambutac.com/ => https://adambutac.com/favicon.ico"
+        },
+        "https://adambutac.com/favicon.png": {
+            "status": 200,
+            "path": "undefined => https://adambutac.com/ => https://adambutac.com/favicon.png"
+        },
+        "https://adambutac.com/apple-touch-icon.png": {
+            "status": 200,
+            "path": "undefined => https://adambutac.com/ => https://adambutac.com/apple-touch-icon.png"
+        },
+        "https://adambutac.com/": {
+            "status": "visited",
+            "path": "undefined => https://adambutac.com/ => https://adambutac.com/"
+        },
+        "https://adambutac.com/#$%7Bs+o%7D": {
+            "status": 200,
+            "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs+o%7D",
+            "https://adambutac.com/favicon.ico": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs+o%7D => https://adambutac.com/favicon.ico"
+            },
+            "https://adambutac.com/favicon.png": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs+o%7D => https://adambutac.com/favicon.png"
+            },
+            "https://adambutac.com/apple-touch-icon.png": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs+o%7D => https://adambutac.com/apple-touch-icon.png"
+            },
+            "https://adambutac.com/": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs+o%7D => https://adambutac.com/"
+            },
+            "https://adambutac.com/#$%7Bs+o%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs+o%7D => https://adambutac.com/#$%7Bs+o%7D"
+            },
+            "https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs+o%7D => https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D"
+            },
+            "https://adambutac.com/$%7BL(r)%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs+o%7D => https://adambutac.com/$%7BL(r)%7D"
+            },
+            "https://adambutac.com/$%7Bp.href%7C%7C": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs+o%7D => https://adambutac.com/$%7Bp.href%7C%7C"
+            },
+            "https://adambutac.com/$%7BL(w)%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs+o%7D => https://adambutac.com/$%7BL(w)%7D"
+            }
+        },
+        "https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D": {
+            "status": 200,
+            "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D",
+            "https://adambutac.com/favicon.ico": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D => https://adambutac.com/favicon.ico"
+            },
+            "https://adambutac.com/favicon.png": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D => https://adambutac.com/favicon.png"
+            },
+            "https://adambutac.com/apple-touch-icon.png": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D => https://adambutac.com/apple-touch-icon.png"
+            },
+            "https://adambutac.com/": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D => https://adambutac.com/"
+            },
+            "https://adambutac.com/#$%7Bs+o%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D => https://adambutac.com/#$%7Bs+o%7D"
+            },
+            "https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D => https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D"
+            },
+            "https://adambutac.com/$%7BL(r)%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D => https://adambutac.com/$%7BL(r)%7D"
+            },
+            "https://adambutac.com/$%7Bp.href%7C%7C": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D => https://adambutac.com/$%7Bp.href%7C%7C"
+            },
+            "https://adambutac.com/$%7BL(w)%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D => https://adambutac.com/$%7BL(w)%7D"
+            }
+        },
+        "https://adambutac.com/$%7BL(r)%7D": {
+            "status": 200,
+            "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(r)%7D",
+            "https://adambutac.com/favicon.ico": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(r)%7D => https://adambutac.com/favicon.ico"
+            },
+            "https://adambutac.com/favicon.png": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(r)%7D => https://adambutac.com/favicon.png"
+            },
+            "https://adambutac.com/apple-touch-icon.png": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(r)%7D => https://adambutac.com/apple-touch-icon.png"
+            },
+            "https://adambutac.com/": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(r)%7D => https://adambutac.com/"
+            },
+            "https://adambutac.com/#$%7Bs+o%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(r)%7D => https://adambutac.com/#$%7Bs+o%7D"
+            },
+            "https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(r)%7D => https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D"
+            },
+            "https://adambutac.com/$%7BL(r)%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(r)%7D => https://adambutac.com/$%7BL(r)%7D"
+            },
+            "https://adambutac.com/$%7Bp.href%7C%7C": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(r)%7D => https://adambutac.com/$%7Bp.href%7C%7C"
+            },
+            "https://adambutac.com/$%7BL(w)%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(r)%7D => https://adambutac.com/$%7BL(w)%7D"
+            }
+        },
+        "https://adambutac.com/$%7Bp.href%7C%7C": {
+            "status": 200,
+            "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7Bp.href%7C%7C",
+            "https://adambutac.com/favicon.ico": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7Bp.href%7C%7C => https://adambutac.com/favicon.ico"
+            },
+            "https://adambutac.com/favicon.png": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7Bp.href%7C%7C => https://adambutac.com/favicon.png"
+            },
+            "https://adambutac.com/apple-touch-icon.png": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7Bp.href%7C%7C => https://adambutac.com/apple-touch-icon.png"
+            },
+            "https://adambutac.com/": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7Bp.href%7C%7C => https://adambutac.com/"
+            },
+            "https://adambutac.com/#$%7Bs+o%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7Bp.href%7C%7C => https://adambutac.com/#$%7Bs+o%7D"
+            },
+            "https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7Bp.href%7C%7C => https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D"
+            },
+            "https://adambutac.com/$%7BL(r)%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7Bp.href%7C%7C => https://adambutac.com/$%7BL(r)%7D"
+            },
+            "https://adambutac.com/$%7Bp.href%7C%7C": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7Bp.href%7C%7C => https://adambutac.com/$%7Bp.href%7C%7C"
+            },
+            "https://adambutac.com/$%7BL(w)%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7Bp.href%7C%7C => https://adambutac.com/$%7BL(w)%7D"
+            }
+        },
+        "https://adambutac.com/$%7BL(w)%7D": {
+            "status": 200,
+            "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(w)%7D",
+            "https://adambutac.com/favicon.ico": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(w)%7D => https://adambutac.com/favicon.ico"
+            },
+            "https://adambutac.com/favicon.png": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(w)%7D => https://adambutac.com/favicon.png"
+            },
+            "https://adambutac.com/apple-touch-icon.png": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(w)%7D => https://adambutac.com/apple-touch-icon.png"
+            },
+            "https://adambutac.com/": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(w)%7D => https://adambutac.com/"
+            },
+            "https://adambutac.com/#$%7Bs+o%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(w)%7D => https://adambutac.com/#$%7Bs+o%7D"
+            },
+            "https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(w)%7D => https://adambutac.com/#$%7Bs%7Dref-$%7Bv%7D$%7B_%7D"
+            },
+            "https://adambutac.com/$%7BL(r)%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(w)%7D => https://adambutac.com/$%7BL(r)%7D"
+            },
+            "https://adambutac.com/$%7Bp.href%7C%7C": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(w)%7D => https://adambutac.com/$%7Bp.href%7C%7C"
+            },
+            "https://adambutac.com/$%7BL(w)%7D": {
+                "status": "visited",
+                "path": "undefined => https://adambutac.com/ => https://adambutac.com/$%7BL(w)%7D => https://adambutac.com/$%7BL(w)%7D"
+            }
+        }
+    }
+}
