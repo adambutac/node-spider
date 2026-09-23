@@ -6,6 +6,8 @@ import https from 'https';
 
 const VISITED_LINKS = {};
 let OPEN_CONNECTIONS = 0;
+const MAX_CONCURRENCY = 10;
+const QUEUE = [];
 
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
@@ -15,6 +17,13 @@ function log(res, target) {
     statusCode: res.statusCode,
     headers: res.headers
   });
+}
+
+function processQueue(map, home) {
+  while (OPEN_CONNECTIONS < MAX_CONCURRENCY && QUEUE.length > 0) {
+    const { target } = QUEUE.shift();
+    scrape(map, home, target);
+  }
 }
 
 function scrape(map, home, target) {
@@ -38,6 +47,11 @@ function scrape(map, home, target) {
     return;
   }
 
+  if (OPEN_CONNECTIONS >= MAX_CONCURRENCY) {
+    QUEUE.push({ target });
+    return;
+  }
+
   let protocol = null;
   if(targetUrl.protocol === 'https:') protocol = https;
   else if(targetUrl.protocol === 'http:') protocol = http;
@@ -54,14 +68,16 @@ function scrape(map, home, target) {
           if(links) {
             links.forEach(link => {
               link = link.split(/(\"|\')/ig)[2];
-              scrape(map[targetUrl.href], home, link);
+              scrape(map, home, link);
             });
           }
+          processQueue(map, home);
         });
         break;
       case 301:
       case 302:
-        scrape(map[targetUrl.href], home, res.headers.location);
+        scrape(map, home, res.headers.location);
+        processQueue(map, home);
       break;
       default:
       //log(res, targetUrl.href);
@@ -78,6 +94,7 @@ function scrape(map, home, target) {
   }).on('timeout', () => {
     console.log('timeout');
   }).on('close', () => {
+    processQueue(map, home);
     OPEN_CONNECTIONS--;
     if(map[targetUrl.href].status === 'unresolved') scrape(map, home, target);
     else {
