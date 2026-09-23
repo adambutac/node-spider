@@ -3,6 +3,7 @@ import fs from 'fs';
 import url from 'url';
 import http from 'http';
 import https from 'https';
+import { Command } from 'commander';
 
 const VISITED_LINKS = {};
 let OPEN_CONNECTIONS = 0;
@@ -17,7 +18,7 @@ function log(res, target) {
   });
 }
 
-function scrape(map, home, target) {
+function scrape(map, home, target, options = {}) {
   const homeUrl = url.parse(home);
   const targetUrl = url.parse(url.resolve(home, target));
 
@@ -43,7 +44,13 @@ function scrape(map, home, target) {
   else if(targetUrl.protocol === 'http:') protocol = http;
   else return;
 
-  protocol.get(targetUrl.href, res => {
+  const requestOptions = {
+    headers: {
+      'User-Agent': options.userAgent || 'node-spider/1.0'
+    }
+  };
+
+  protocol.get(targetUrl.href, requestOptions, res => {
     map[targetUrl.href].status = res.statusCode;
     switch(res.statusCode) {
       case 200:
@@ -54,14 +61,14 @@ function scrape(map, home, target) {
           if(links) {
             links.forEach(link => {
               link = link.split(/(\"|\')/ig)[2];
-              scrape(map[targetUrl.href], home, link);
+              scrape(map[targetUrl.href], home, link, options);
             });
           }
         });
         break;
       case 301:
       case 302:
-        scrape(map[targetUrl.href], home, res.headers.location);
+        scrape(map[targetUrl.href], home, res.headers.location, options);
       break;
       default:
       //log(res, targetUrl.href);
@@ -79,7 +86,7 @@ function scrape(map, home, target) {
     console.log('timeout');
   }).on('close', () => {
     OPEN_CONNECTIONS--;
-    if(map[targetUrl.href].status === 'unresolved') scrape(map, home, target);
+    if(map[targetUrl.href].status === 'unresolved') scrape(map, home, target, options);
     else {
     }
   }).on('error', e => {
@@ -89,7 +96,7 @@ function scrape(map, home, target) {
       case 'ETIMEDOUT':
         console.log('Connection timed out')
         console.log(`retrying ${targetUrl.href}...`);
-        scrape(map, home, target);
+        scrape(map, home, target, options);
         break;
       default:
         console.log(e);
@@ -98,19 +105,29 @@ function scrape(map, home, target) {
 }
 
 function main() {
-  console.log('> This spider climbs the web B^)')
-  const site = process.argv[2];
-  const siteUrl = url.parse(site);
-  const map = {};
-  scrape(map, site, '');
-  const interval = setInterval(() => {
-    console.log(`Connections: ${OPEN_CONNECTIONS}`);
-    console.log(`MEM: ${process.memoryUsage().rss/1000000}MB`);
-    if(OPEN_CONNECTIONS === 0){
-      fs.writeFileSync(`${siteUrl.hostname}.json`, JSON.stringify(map, null, 4));
-      clearInterval(interval);
-    }
-  }, 2000);
+  const program = new Command();
+
+  program
+    .name('node-spider')
+    .description('A fast Node.js link crawler')
+    .argument('<target>', 'target website URL')
+    .option('-u, --user-agent <agent>', 'custom user agent string')
+    .action((target, options) => {
+      console.log('> This spider climbs the web B^)')
+      const siteUrl = url.parse(target);
+      const map = {};
+      scrape(map, target, '', options);
+      const interval = setInterval(() => {
+        console.log(`Connections: ${OPEN_CONNECTIONS}`);
+        console.log(`MEM: ${process.memoryUsage().rss/1000000}MB`);
+        if(OPEN_CONNECTIONS === 0){
+          fs.writeFileSync(`${siteUrl.hostname}.json`, JSON.stringify(map, null, 4));
+          clearInterval(interval);
+        }
+      }, 2000);
+    });
+
+  program.parse();
 }
 
 main();
