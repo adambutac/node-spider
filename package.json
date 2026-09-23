@@ -1,6 +1,7 @@
 {
   "name": "spider",
   "version": "1.0.0",
+  "type": "module",
   "description": "web scraper",
   "main": "index.js",
   "scripts": {
