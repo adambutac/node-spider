@@ -102,6 +102,21 @@ function main() {
   const site = process.argv[2];
   const siteUrl = url.parse(site);
   const map = {};
+
+  process.on('SIGINT', () => {
+    console.log('\nGracefully shutting down...');
+    fs.writeFileSync(`${siteUrl.hostname}.json`, JSON.stringify(map, null, 4));
+    console.log(`Progress saved to ${siteUrl.hostname}.json. Exiting.`);
+    process.exit(0);
+  });
+
+  process.on('SIGTERM', () => {
+    console.log('\nReceived SIGTERM. Gracefully shutting down...');
+    fs.writeFileSync(`${siteUrl.hostname}.json`, JSON.stringify(map, null, 4));
+    console.log(`Progress saved to ${siteUrl.hostname}.json. Exiting.`);
+    process.exit(0);
+  });
+
   scrape(map, site, '');
   const interval = setInterval(() => {
     console.log(`Connections: ${OPEN_CONNECTIONS}`);
