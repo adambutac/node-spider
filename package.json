@@ -1,6 +1,7 @@
 {
   "name": "spider",
   "version": "1.0.0",
+  "type": "module",
   "description": "web scraper",
   "main": "index.js",
   "scripts": {
@@ -11,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cheerio": "^1.2.0",
     "terser": "^5.51.2"
   }
 }
