@@ -17,9 +17,19 @@ function log(res, target) {
   });
 }
 
-function scrape(map, home, target) {
+function scrape(map, home, target, depth = 0) {
   const homeUrl = url.parse(home);
   const targetUrl = url.parse(url.resolve(home, target));
+
+  const MAX_DEPTH = 5;
+
+  if (depth > MAX_DEPTH) {
+    map[targetUrl.href] = {
+      status: 'max depth reached',
+      path: `${map.path} => ${targetUrl.href}`
+    };
+    return;
+  }
 
   map[targetUrl.href] = {
     status: 'unresolved',
@@ -54,14 +64,14 @@ function scrape(map, home, target) {
           if(links) {
             links.forEach(link => {
               link = link.split(/(\"|\')/ig)[2];
-              scrape(map[targetUrl.href], home, link);
+              scrape(map[targetUrl.href], home, link, depth + 1);
             });
           }
         });
         break;
       case 301:
       case 302:
-        scrape(map[targetUrl.href], home, res.headers.location);
+        scrape(map[targetUrl.href], home, res.headers.location, depth);
       break;
       default:
       //log(res, targetUrl.href);
@@ -79,7 +89,7 @@ function scrape(map, home, target) {
     console.log('timeout');
   }).on('close', () => {
     OPEN_CONNECTIONS--;
-    if(map[targetUrl.href].status === 'unresolved') scrape(map, home, target);
+    if(map[targetUrl.href].status === 'unresolved') scrape(map, home, target, depth);
     else {
     }
   }).on('error', e => {
@@ -89,7 +99,7 @@ function scrape(map, home, target) {
       case 'ETIMEDOUT':
         console.log('Connection timed out')
         console.log(`retrying ${targetUrl.href}...`);
-        scrape(map, home, target);
+        scrape(map, home, target, depth);
         break;
       default:
         console.log(e);
